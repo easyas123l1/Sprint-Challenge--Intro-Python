@@ -8,30 +8,33 @@ class City():
     self.lat = lat
     self.lon = lon
 
-    def isWithin(self, position1, position2):
-      withinLatRange = False
-      withinLonRange = False
-      
-      # first check in within lat
-      if(position1[0] - position2[0] > 0):
-        if(self.lat < position1[0] and self.lat > position2[0]):
-          withinLatRange = True
-      else:
-        if(self.lat < position2[0] and self.lat > position1[0]):
-          withinLatRange = True
+    
 
-      # next check if within lon
-      if (position1[1] - position2[1] > 0):
-        if(self.lon < position1 and self.lon > position2[1]):
-          withinLonRange = True
-      else:
-        if(self.lon < position2[1] and self.lon > position1[1]):
-          withinLonRange = True
+  def isWithin(self, position1, position2):
+    withinLatRange = False
+    withinLonRange = False
+    
+    # first check in within lat
+    if(position1[0] - position2[0] > 0):
+      if(self.lat < position1[0] and self.lat > position2[0]):
+        withinLatRange = True
+    else:
+      if(self.lat < position2[0] and self.lat > position1[0]):
+        withinLatRange = True
 
-      if (withinLatRange and  withinLonRange):
-        return True
-      else: 
-        return False
+    # next check if within lon
+    if (position1[1] - position2[1] > 0):
+      if(self.lon < position1[1] and self.lon > position2[1]):
+        withinLonRange = True
+    else:
+      if(self.lon < position2[1] and self.lon > position1[1]):
+        withinLonRange = True
+
+    #if both true return true
+    if (withinLatRange and  withinLonRange):
+      return True
+    else: 
+      return False
        
 
 # We have a collection of US cities with population over 750,000 stored in the
